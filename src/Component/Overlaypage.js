@@ -50,8 +50,8 @@ class OverlayFilter extends React.Component{
                     let FilterList = this.state.list;
                         FilterList.gender = this.state.gender;
                         FilterList.category = document.getElementById("category").value;
-                        FilterList.lowPrice = Number(document.getElementById("lowPrice").value)
-                        FilterList.highPrice = Number(document.getElementById("highPrice").value)
+                        FilterList.lowPrice = document.getElementById("lowPrice").value
+                        FilterList.highPrice = document.getElementById("highPrice").value
                     this.setState({list : FilterList});
                     this.props.filterData(this.state.list);
     }

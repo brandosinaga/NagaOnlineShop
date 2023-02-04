@@ -14,47 +14,21 @@ export default class Content extends React.Component{
         products.map((e) => {
 
             let price = Number(e.price);
+            let lowPrice  = Number(dataFilter.lowPrice);
+            let highPrice = Number(dataFilter.highPrice);
             
-            
-                if(e.category.indexOf(dataFilter.category) === -1){
-
-                    return;
-                }
+                if(e.category.indexOf(dataFilter.category) === -1)return;
                 
-                        if(e.gender.indexOf(dataFilter.gender) === -1){
-                            
-                            return;
-                        }
+                        if(e.gender.indexOf(dataFilter.gender) === -1) return;
 
-                                    if(e.name.toLocaleLowerCase().indexOf(textFilter) === -1){
-                                
-                                        return;
-                                
-                                    }
+                                    if(e.name.toLocaleLowerCase().indexOf(textFilter) === -1)return;
+
+                                           
+    if(lowPrice > price && lowPrice !== 0 ) return;
+
+
+    if(highPrice < price && highPrice !== 0) return;
                                     
-
-                                    // if(typeof dataFilter.lowPrice !== 0 && dataFilter.highPrice !== 0){
-
-                                    //     return
-
-                                    // } elsei
-                                    //         if(price < dataFilter.lowPrice){
-
-                                    //             return ;
-                                    //         }
-
-                                    //         if(price > dataFilter.highPrice){
-                                    //             return;
-                                    //         }
-
-          
-
-                                    console.log(document.getElementById("lowPrice").value === "");
-
-           
-
-
-
 
           
                 items.push(<Item key={e.id} product = {e} addToCart = {this.props.addToCart} inCart = {e.inCart} delCart = {this.props.delCart}/>)

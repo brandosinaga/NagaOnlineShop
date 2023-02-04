@@ -56,11 +56,10 @@ class App extends React.Component {
 
     addThisItem(e){
 
-
             let items = this.state.list;
 
             items.forEach((item) => {
-
+                
                 if(item.name === e.name){
                   item.quantityInCart = item.quantityInCart + 1;
                    shoppingProducts[e.id].quantityInCart = item.quantityInCart;
@@ -132,7 +131,7 @@ class App extends React.Component {
         let overlaypageprops = {call_overlay: this.state.call_overlay, filterData : this.filterData.bind(this), cart : this.state.list, addThisItem : this.addThisItem.bind(this), decThisItem : this.decThisItem.bind(this), totalBayar : this.state.countPay, deleteItem : this.deleteItem.bind(this), btnStatus : this.handleBtnfilter.bind(this) }
 
 
-        console.log(this.state.itemIntCart)
+
 
         return <div className='root-firstchild'>    
                     <Header {...headerProps}/>
