@@ -92,7 +92,7 @@ class OverlayFilter extends React.Component{
                     </select>
                     <p><label>Price <input id="lowPrice" type="number" /> - <input id="highPrice" type="number" /></label></p>
                  
-                <button onClick={this.handleClick}>Change Data</button>
+                <button onClick={this.handleClick}>filter</button>
 
                 </div>
                 
@@ -112,15 +112,23 @@ class OverlayFilter extends React.Component{
 class OverlayCart extends React.Component{
     
     btnStatus = () => this.props.btnStatus();
-    
 
 
     render(){
 
         const {cart, addThisItem, decThisItem, deleteItem, totalBayar, } = this.props;
         const showItems = []; 
+        let count = 0;
+
+        
+
+        cart.map((item) => {
+        
+        showItems.push(<Cart key={count} item = {item} addThisItem={addThisItem} decThisItem={decThisItem} deleteItem={deleteItem} />)
             
-        cart.map((item) => showItems.push(<Cart id={item.id} item = {item} addThisItem={addThisItem} decThisItem={decThisItem} deleteItem={deleteItem} />))
+        count++
+    
+        })
         
 
 
@@ -147,14 +155,11 @@ class OverlayCart extends React.Component{
 class Cart extends React.Component {
 
 
-
 addThisItem = () => this.props.addThisItem(this.props.item);
 
 decThisItem = () => this.props.decThisItem(this.props.item);
 
 deleteItem = () => this.props.deleteItem(this.props.item);
-
-
 
 
 render(){
@@ -167,7 +172,7 @@ render(){
                 <div className="container-cart-price">
                     <p>{`$ `+item.price}</p>
                     <div className="container-cart-btn">
-                        <button onClick={this.addThisItem.bind(this)}><span className="material-symbols-outlined">add</span></button>
+                        <button onClick={this.addThisItem}><span className="material-symbols-outlined">add</span></button>
                                 <span>{item.quantityInCart}</span>
                                 {item.quantityInCart > 1 &&  <button onClick={this.decThisItem}><span className="material-symbols-outlined">remove</span></button>}
                                 {item.quantityInCart === 1 && <button onClick={this.deleteItem}><span className="material-symbols-outlined">delete_sweep</span></button>}

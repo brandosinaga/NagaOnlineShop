@@ -18,12 +18,14 @@ class App extends React.Component {
         list : [], 
         btn_status : false,
         call_overlay : "", 
+
         dataToFilter : {
                         gender : "", 
                             category : "", 
                              lowPrice : "", 
                                  highPrice : ""
                                  }, 
+
         textToFilter:"",
         itemIntCart : 0,
         countPay : 0
@@ -72,7 +74,7 @@ class App extends React.Component {
 
     addThisItem = (e) => {
 
-        const {list, countPay, itemIntCart} = this.state
+        const {list, countPay, itemIntCart} = this.state;
 
         const items = list;
 
