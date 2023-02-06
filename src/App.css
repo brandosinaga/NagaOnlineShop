@@ -254,6 +254,44 @@
                     align-items: center;
 }
 
+
+
+
+.slideForCategory
+{
+                  
+                    width: 100vw;
+                    height: 15em;
+                    padding: 10px;
+                    border-radius: 2em;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                   
+                  
+                    
+}
+
+.slideForCategory > h1
+{
+                    font-size: 2em;
+                    color : rgb(255, 255, 255);
+                    font-weight: bolder;
+}
+
+
+
+
+
+
+
+
+
+
 /* ******************************* RESPONSIVE STYLE *************************************************************** */
 
 

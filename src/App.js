@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Card,Button,Nav,Navbar,NavDropdown,Container,Image, Row, Col} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Card,Button,Nav,Navbar,NavDropdown,Container,Image, Row, Col} from 'react-bootstrap';
 import React, { useState, setState, Fragment, useEffect, createContext, useContext, useRef,useReducer } from 'react';
 // import { propTypes } from 'react-bootstrap/esm/Image';
 import Header from './Component/Header';
@@ -10,6 +10,8 @@ import Overlaypage from './Component/Overlaypage';
 import {shoppingProducts} from './index.js'
 
 // ***************************************************************************************************************
+
+
 
 
 class App extends React.Component {

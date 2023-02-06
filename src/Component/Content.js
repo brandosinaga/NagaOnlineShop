@@ -1,4 +1,9 @@
 import React from "react";
+import sportImage from "./sport.jpg";
+import casualImage from "./casual.jpg";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Card,Button,Nav,Navbar,NavDropdown,Container,Image, Row, Col,Carousel} from 'react-bootstrap';
+
 
 export default class Content extends React.Component{
 
@@ -8,7 +13,7 @@ export default class Content extends React.Component{
 
         const {shoppingProducts, textFilter, dataFilter, addToCart, delCart} = this.props;
          const items = [];
-        
+        let category;
        
         shoppingProducts.map((e) => {
 
@@ -16,21 +21,26 @@ export default class Content extends React.Component{
             const lowPrice  = Number(dataFilter.lowPrice);
             const highPrice = Number(dataFilter.highPrice);
             
-                if(e.category.indexOf(dataFilter.category) === -1)return;
+
+     if(e.category.indexOf(dataFilter.category) === -1)return;
                 
-                        if(e.gender.indexOf(dataFilter.gender) === -1) return;
+        if(e.gender.indexOf(dataFilter.gender) === -1) return;
 
-                                    if(e.name.toLocaleLowerCase().indexOf(textFilter.toLocaleLowerCase()) === -1)return;
+            if(e.name.toLocaleLowerCase().indexOf(textFilter.toLocaleLowerCase()) === -1)return;
 
-                                           
-                                        if(lowPrice > price && lowPrice !== 0 ) return;
+                if(lowPrice > price && lowPrice !== 0 ) return;
 
-
-                                                if(highPrice < price && highPrice !== 0) return;
+                    if(highPrice < price && highPrice !== 0) return;
                                     
+                        if(category !== e.category) {
+                
+                                    category = e.category;
+                                    items.push(<Category categoryName = {category} />)
 
-          
-     items.push(<Item key={e.id} product = {e} addToCart = {addToCart} inCart = {e.inCart} delCart = {delCart}/>)
+                            }
+
+
+        items.push(<Item key={e.id} product = {e} addToCart = {addToCart} inCart = {e.inCart} delCart = {delCart}/>)
 
               
             
@@ -91,5 +101,32 @@ class Item extends React.Component {
                 </div>)
     }
 }
+
+
+
+
+
+class Category extends React.Component{
+
+
+
+render(){
+    
+    const {categoryName} = this.props;
+    const bg = (categoryName === "Sport Goods") ? `url(${sportImage})` : `url(${casualImage})`
+    const quotes = (categoryName === "Sport Goods") ? "Be The Champions with us ..." : "Be Stylish everyday"
+
+    return (
+            <div className="slideForCategory" style={{backgroundImage : `${bg}`}}>
+             <h1>{quotes}</h1>          
+            </div>
+    )
+
+}
+
+}
+
+
+
 
 
