@@ -114,7 +114,7 @@ render(){
     
     const {categoryName} = this.props;
     const bg = (categoryName === "Sport Goods") ? `url(${sportImage})` : `url(${casualImage})`
-    const quotes = (categoryName === "Sport Goods") ? "Be The Champions with us ..." : "Be Stylish everyday"
+    const quotes = (categoryName === "Sport Goods") ? "Sport Goods" : "Casual Goods"
 
     return (
             <div className="slideForCategory" style={{backgroundImage : `${bg}`}}>

@@ -50,6 +50,22 @@ class App extends React.Component {
     textFilter = (e) => this.setState({textToFilter : e});
 
 
+    filterGender = (e) => {
+                        
+            const {dataToFilter} = this.state;
+            
+            const {gender , category, lowPrice, highPrice} = dataToFilter
+
+            dataToFilter.gender = e;
+           
+
+
+            this.setState({dataToFilter : dataToFilter})
+            
+
+
+
+    }
 
 
     handleAddToCart = (e) => {
@@ -164,12 +180,12 @@ class App extends React.Component {
         const {btn_status, call_overlay, textToFilter, list, itemIntCart, dataToFilter, countPay } = this.state;
         const shoppingProducts = this.props.shoppingProducts
         
-        const headerProps = {callOverlayPage : this.handleBtnfilter, textFilter : this.textFilter, itemInCart : itemIntCart};
+        const headerProps = {callOverlayPage : this.handleBtnfilter, textFilter : this.textFilter, itemInCart : itemIntCart, filteredText : textToFilter, filterGender : this.filterGender};
         const contentProps = {shoppingProducts : shoppingProducts, textFilter : textToFilter, dataFilter : dataToFilter, addToCart : this.handleAddToCart, delCart : this.deleteItem};
         const overlaypageprops = {call_overlay: call_overlay, filterData : this.filterData, cart : list, addThisItem : this.addThisItem, decThisItem : this.decThisItem, totalBayar : countPay, deleteItem : this.deleteItem, btnStatus : this.handleBtnfilter}
 
 
-
+            console.log(this.state.dataToFilter)
 
         return ( 
         

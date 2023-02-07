@@ -42,7 +42,6 @@ export default class Overlaypage extends React.Component{
 
 
 
-
 class OverlayFilter extends React.Component{
 
     state = {  list : {}, gender : ''};
@@ -66,7 +65,7 @@ class OverlayFilter extends React.Component{
 
 
 
-    handleClick = () => {
+  handleClick = () => {
 
         const {list,gender} = this.state;
 
@@ -85,6 +84,8 @@ class OverlayFilter extends React.Component{
 
 
     render(){
+
+        console.log("this filter data banner")
 
         return (
         
@@ -267,9 +268,7 @@ class DefaultExample extends React.Component{
     render(){
 
         let item = this.props.item;
-
-        console.log(item)
-        
+    
         return (
 
             <ListGroup.Item
@@ -295,12 +294,6 @@ class DefaultExample extends React.Component{
 
   
   
-
-
-
-
-
-
 
 
 

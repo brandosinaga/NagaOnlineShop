@@ -176,13 +176,16 @@
                        
                         width: 80%;
                         height: 30%;
-                        border: 1px solid red;
                         overflow: scroll;
                         position: relative;
                         animation-name: overlayAnimation;
                         animation-duration: 2s;
 
 }
+
+
+
+
 
 
 .overlayCart
@@ -263,7 +266,6 @@
                     width: 100vw;
                     height: 15em;
                     padding: 10px;
-                    border-radius: 2em;
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
@@ -290,7 +292,7 @@
 
 .payment 
 {
-                    border: 2px solid red;
+                    
                     position: absolute;
                     height: 100%;
                     width: 100%;
@@ -304,6 +306,24 @@
 
 
 
+.responsive-menu
+{
+                    border: 2px solid red;
+                    opacity: 0;
+                    background-color: red;
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    margin-top: 1;
+                 
+
+
+                   
+}
+
+
+
+/* ******************************* RESPONSIVE MENU ****************************************************** */
 
 
 
@@ -313,7 +333,6 @@
 
 
                         .filter{display: none;}
-                        .cart{display: none;}
                         .menu{display: block;}
 
 }
@@ -323,5 +342,6 @@
 
                         0% {top:-500px}
                         100% {top :0px}
+                        
    
   }
