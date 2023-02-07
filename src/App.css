@@ -288,11 +288,25 @@
 
 
 
-
+.payment 
+{
+                    border: 2px solid red;
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    top: 0%;
+                   
+}
 
 
 
 /* ******************************* RESPONSIVE STYLE *************************************************************** */
+
+
+
+
+
+
 
 
 @media screen and (max-width : 650px){

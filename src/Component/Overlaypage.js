@@ -1,6 +1,9 @@
 
 import React from "react";
 
+import { Card,Button,Nav,Navbar,NavDropdown,Container,Image, Row, Col, ListGroup, ListGroupItem, Badge, Alert} from 'react-bootstrap';
+
+
 
 
 
@@ -111,38 +114,212 @@ class OverlayFilter extends React.Component{
 
 
 
+
+
+
+
+
 class OverlayCart extends React.Component{
     
+    state = {
+
+
+            status : false,
+
+    }
+
+
+
     btnStatus = () => this.props.btnStatus();
+
+    handleClick= () =>  this.setState({status : !this.state.status}, this.changeDisplay);
+
+       
+            
+            
+
+
+
+    changeDisplay = () => {
+
+        const cartBanner = document.querySelector(".overlayCart")
+
+        if(this.state.status === true){
+
+                         cartBanner.style.display = "none";
+        } else {
+            
+                            cartBanner.style.display = "block"
+        }
+    }
+
+
+
+
+
+
 
 
     render(){
 
         const {cart, addThisItem, decThisItem, deleteItem, totalBayar, } = this.props;
+        const {status} = this.state;
         const showItems = []; 
         let count = 0;
 
-        
 
         cart.map((item) => {
         
         showItems.push(<Cart key={count} item = {item} addThisItem={addThisItem} decThisItem={decThisItem} deleteItem={deleteItem} />)
-            
+        
         count++
     
         })
         
+            
 
-
-        return (<div className="overlayCart">
+        return (
+        <>
+        <div className="overlayCart">
                   
                   {showItems}
 
                 <h1>total bayar : {totalBayar}</h1>
                 <button onClick={this.btnStatus}><span className="material-symbols-outlined">arrow_back</span>Back to Shop</button>
-                </div>)
+                <button onClick={this.handleClick}>Bayar</button>
+               
+                </div>
+                 {this.state.status && <Pay handleClick = {this.handleClick} cart={cart} totalBayar = {totalBayar} />}
+                
+                </> )
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Pay extends React.Component {
+
+    render(){
+
+        let cart = this.props.cart;
+        let showItems = [];
+
+        cart.map((e) => showItems.push(<DefaultExample item = {e} />))
+
+        return (
+        <div className="payment">
+            <h1>Payment Details :</h1>
+            <ListGroup as="ol" numbered>
+                 {showItems} 
+            </ListGroup>
+           
+            <ListGroup as="ol" >
+                  
+            <ListGroup.Item
+            as="li"
+            className="d-flex justify-content-between align-items-start"
+          >
+            <div className="ms-2 me-auto">
+              <div className="fw-bold">
+              <Button onClick={this.props.handleClick}>Kembali</Button>
+              </div>
+            </div>
+            <Badge bg="warning" pill>
+              Total Payment
+            </Badge>
+            <Button bg="primary" pill>
+            {this.props.totalBayar}
+            </Button>
+          </ListGroup.Item>
+            </ListGroup>
+
+            <Nav variant="pills" className="justify-content-center">
+                <Nav.Item>
+                    <Nav.Link><Button>Bayar</Button></Nav.Link>
+                </Nav.Item>
+            </Nav>
+
+          
+            </div>
+        )
+    }
+}
+
+
+
+
+
+
+
+
+
+class DefaultExample extends React.Component{
+
+    render(){
+
+        let item = this.props.item;
+
+        console.log(item)
+        
+        return (
+
+            <ListGroup.Item
+            as="li"
+            className="d-flex justify-content-between align-items-start"
+          >
+            <div className="ms-2 me-auto">
+              <div className="fw-bold">{item.name}</div>
+              {item.quantityInCart} *  ${item.price}
+            </div>
+            <Badge bg="warning" pill>
+              $
+            </Badge>
+            <Button bg="primary" pill>
+              {item.price * item.quantityInCart}
+            </Button>
+          </ListGroup.Item>
+
+        )
+    }
+}
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
