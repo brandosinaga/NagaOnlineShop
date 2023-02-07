@@ -24,7 +24,6 @@ export default class Overlaypage extends React.Component{
             }
 
 
-
             const call_Overlay = ( call_overlay === "call_cart")? <OverlayCart {...overlayCartProps} /> :<OverlayFilter filterData = {filterData}  />
 
 
@@ -62,6 +61,8 @@ class OverlayFilter extends React.Component{
                 this.setState({gender : gender});
 
     }
+
+
 
 
 
@@ -122,11 +123,8 @@ class OverlayFilter extends React.Component{
 class OverlayCart extends React.Component{
     
     state = {
-
-
             status : false,
-
-    }
+        }
 
 
 
@@ -134,15 +132,10 @@ class OverlayCart extends React.Component{
 
     handleClick= () =>  this.setState({status : !this.state.status}, this.changeDisplay);
 
-       
-            
-            
-
-
-
+    
     changeDisplay = () => {
 
-        const cartBanner = document.querySelector(".overlayCart")
+        const cartBanner = document.querySelector(".overlayCart");
 
         if(this.state.status === true){
 
@@ -154,12 +147,6 @@ class OverlayCart extends React.Component{
     }
 
 
-
-
-
-
-
-
     render(){
 
         const {cart, addThisItem, decThisItem, deleteItem, totalBayar, } = this.props;
@@ -167,10 +154,18 @@ class OverlayCart extends React.Component{
         const showItems = []; 
         let count = 0;
 
+        let CartComponentProperties = {
+                                
+                addThisItem : addThisItem,
+                decThisItem : decThisItem,
+                deleteItem : deleteItem
+
+        }
+
 
         cart.map((item) => {
         
-        showItems.push(<Cart key={count} item = {item} addThisItem={addThisItem} decThisItem={decThisItem} deleteItem={deleteItem} />)
+        showItems.push(<Cart key={count} item = {item} {...CartComponentProperties} />)
         
         count++
     
@@ -214,7 +209,8 @@ class Pay extends React.Component {
 
     render(){
 
-        let cart = this.props.cart;
+        const {cart,handleClick,totalBayar} = this.props;
+        
         let showItems = [];
 
         cart.map((e) => showItems.push(<DefaultExample item = {e} />))
@@ -234,14 +230,14 @@ class Pay extends React.Component {
           >
             <div className="ms-2 me-auto">
               <div className="fw-bold">
-              <Button onClick={this.props.handleClick}>Kembali</Button>
+              <Button onClick={handleClick}>Kembali</Button>
               </div>
             </div>
             <Badge bg="warning" pill>
               Total Payment
             </Badge>
             <Button bg="primary" pill>
-            {this.props.totalBayar}
+            {totalBayar}
             </Button>
           </ListGroup.Item>
             </ListGroup>
