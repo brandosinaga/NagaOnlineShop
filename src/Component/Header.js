@@ -129,7 +129,7 @@ render(){
 class CountItemInCart extends React.Component{
     render(){
         return (
-                    <Badge bg="secondary" className="itemInCart">{this.props.itemInCart}</Badge>
+                    <div bg="secondary" className="itemInCart">{this.props.itemInCart}</div>
 
 
         )

@@ -40,9 +40,22 @@ class App extends React.Component {
     handleBtnfilter = (e) => this.setState({btn_status : !this.state.btn_status, call_overlay : e});
 
 
-
-
     filterData = (e) => {this.setState({dataToFilter : e}); this.setState({btn_status : !this.state.btn_status})};
+
+
+
+    filterNothing = () => {
+
+            const {dataToFilter} = this.state
+                dataToFilter.gender = "";
+                dataToFilter.category = "";
+                dataToFilter.lowPrice  = "";
+                dataToFilter.highPrice = "";
+
+            this.setState({dataToFilter : dataToFilter});
+                 this.setState({btn_status : !this.state.btn_status});
+
+    }
 
 
 
@@ -50,20 +63,20 @@ class App extends React.Component {
     textFilter = (e) => this.setState({textToFilter : e});
 
 
+
+
+    
     filterGender = (e) => {
                         
             const {dataToFilter} = this.state;
             
-            const {gender , category, lowPrice, highPrice} = dataToFilter
+            const {gender , category, lowPrice, highPrice} = dataToFilter;
 
             dataToFilter.gender = e;
            
 
 
             this.setState({dataToFilter : dataToFilter})
-            
-
-
 
     }
 
@@ -182,10 +195,10 @@ class App extends React.Component {
         
         const headerProps = {callOverlayPage : this.handleBtnfilter, textFilter : this.textFilter, itemInCart : itemIntCart, filteredText : textToFilter, filterGender : this.filterGender};
         const contentProps = {shoppingProducts : shoppingProducts, textFilter : textToFilter, dataFilter : dataToFilter, addToCart : this.handleAddToCart, delCart : this.deleteItem};
-        const overlaypageprops = {call_overlay: call_overlay, filterData : this.filterData, cart : list, addThisItem : this.addThisItem, decThisItem : this.decThisItem, totalBayar : countPay, deleteItem : this.deleteItem, btnStatus : this.handleBtnfilter}
+        const overlaypageprops = {call_overlay: call_overlay, filterData : this.filterData, cart : list, addThisItem : this.addThisItem, decThisItem : this.decThisItem, totalBayar : countPay, deleteItem : this.deleteItem, btnStatus : this.handleBtnfilter, filterNothing : this.filterNothing}
 
 
-            console.log(this.state.dataToFilter)
+          
 
         return ( 
         

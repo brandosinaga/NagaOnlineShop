@@ -11,7 +11,7 @@ export default class Overlaypage extends React.Component{
 
     render(){
 
-          const {call_overlay,cart,addThisItem,decThisItem,totalBayar,deleteItem,btnStatus,filterData} = this.props;
+          const {call_overlay,cart,addThisItem,decThisItem,totalBayar,deleteItem,btnStatus,filterData, filterNothing} = this.props;
 
 
           const overlayCartProps = {
@@ -20,11 +20,12 @@ export default class Overlaypage extends React.Component{
                   decThisItem : decThisItem,
                     totalBayar : totalBayar,
                      deleteItem : deleteItem,
-                        btnStatus  : btnStatus
+                        btnStatus  : btnStatus,
+                        
             }
 
 
-            const call_Overlay = ( call_overlay === "call_cart")? <OverlayCart {...overlayCartProps} /> :<OverlayFilter filterData = {filterData}  />
+            const call_Overlay = ( call_overlay === "call_cart")? <OverlayCart {...overlayCartProps} /> :<OverlayFilter filterData = {filterData}  filterNothing = {filterNothing}/>
 
 
 
@@ -42,6 +43,9 @@ export default class Overlaypage extends React.Component{
 
 
 
+
+
+
 class OverlayFilter extends React.Component{
 
     state = {  list : {}, gender : ''};
@@ -51,6 +55,8 @@ class OverlayFilter extends React.Component{
     FilterGender = (e) => {
 
         const gender = e.target.value;
+
+  
 
              if(gender === "male") document.getElementById("woman").disabled = true;
                 
@@ -85,11 +91,14 @@ class OverlayFilter extends React.Component{
 
     render(){
 
-        console.log("this filter data banner")
+         const {filterNothing} = this.props;
+
+
 
         return (
         
                 <div className="overlayFilter"> 
+                  <div>
                     <label style={{display : "block"}}>For Man <input id="male" type="checkbox" value="male" onClick={this.FilterGender} /></label>
                     <label style={{display : "block"}}>For Woman <input id="woman" type="checkbox" value="woman" onClick={this.FilterGender} /></label>
                     <select id="category" name="category"> 
@@ -98,8 +107,9 @@ class OverlayFilter extends React.Component{
                         <option value="Casual Goods">Casual Goods</option>
                     </select>
                     <p><label>Price <input id="lowPrice" type="number" /> - <input id="highPrice" type="number" /></label></p>
-                 
+                  </div>
                 <button onClick={this.handleClick}>filter</button>
+                <button onClick={filterNothing}>Show All</button>
 
                 </div>
                 
@@ -177,14 +187,18 @@ class OverlayCart extends React.Component{
         return (
         <>
         <div className="overlayCart">
-                  
-                  {showItems}
+              <div>    
+                      {showItems}
+                       <h1>total bayar : {totalBayar}</h1>
 
-                <h1>total bayar : {totalBayar}</h1>
-                <button onClick={this.btnStatus}><span className="material-symbols-outlined">arrow_back</span>Back to Shop</button>
-                <button onClick={this.handleClick}>Bayar</button>
-               
                 </div>
+
+              <div>
+                <button onClick={this.btnStatus}><span className="material-symbols-outlined">arrow_back</span>Back to Shop</button>
+                <button onClick={this.handleClick}>Detail Pembayaran </button>
+              </div>
+                </div>
+
                  {this.state.status && <Pay handleClick = {this.handleClick} cart={cart} totalBayar = {totalBayar} />}
                 
                 </> )

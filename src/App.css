@@ -165,6 +165,7 @@
                         display: flex;
                         justify-content: center;
                         align-items: center;
+                       
                         
 
 }
@@ -176,29 +177,61 @@
                        
                         width: 80%;
                         height: 30%;
+                        padding: 2em;
                         overflow: scroll;
-                        position: relative;
+                        position: absolute;
+                        top: 10%;
                         animation-name: overlayAnimation;
                         animation-duration: 2s;
+                        border: 5px solid rgb(132, 132, 132);
+                        border-radius: 1em;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        font-weight: bolder;
+                    
+                        
 
 }
 
 
+.overlayFilter > div 
+{
+                       
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        height: 70%;
 
+}
 
 
 
 .overlayCart
 {
                         width: 90%;
-                        height: 50%;
+                        height: 30%;
                         border: 1px solid rgb(193, 193, 193);
                         border-radius: 5px;
+                        padding: 0 1em;
                         overflow: scroll;
-                        position: relative;
+                        position: absolute;
+                        top: 10%;
                         animation-name: overlayAnimation;
-                        animation-duration: 2s;             
+                        animation-duration: 2s;    
+                        border: 2px solid black;
+                        display: flex;
+                        flex-direction: column;     
+                        justify-content: space-between;    
 
+}
+
+
+.overlayCart > div
+{
+                        
+                        display: flex;
+                        flex-direction: column;
 }
 
 /* ******************************* CART STYLE ******************************************************************** */
@@ -209,7 +242,7 @@
                     margin-top:1em;
                     border-radius: 5px;
                     background-color: rgb(194, 194, 194);
-                     display: flex;
+                    display: flex;
                     justify-content: space-between; 
                     
                 
@@ -226,8 +259,8 @@
 }
 .container-cart-img > img
 {
-                width: 3em;
-                height: 3em;
+                    width: 3em;
+                    height: 3em;
                 border-radius: 5px;
                 
 }
@@ -340,8 +373,8 @@
 
 @keyframes overlayAnimation {
 
-                        0% {top:-500px}
-                        100% {top :0px}
+                        0% {top:-100%}
+                        100% {top : 10%}
                         
    
   }
