@@ -251,7 +251,6 @@
 .container-cart-img
 {
                     width: 20%;
-                   
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -261,7 +260,7 @@
 {
                     width: 3em;
                     height: 3em;
-                border-radius: 5px;
+                    border-radius: 5px;
                 
 }
 
@@ -367,6 +366,8 @@
 
                         .filter{display: none;}
                         .menu{display: block;}
+
+                        
 
 }
 
